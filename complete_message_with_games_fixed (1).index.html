@@ -1,0 +1,1352 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رسالة من أعماق الروح - إلى نور</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            overflow-x: hidden;
+            background: #0a0015;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        #galaxy {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            background: radial-gradient(ellipse at center, #1a0033 0%, #0a0015 100%);
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        #nebula {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .page {
+            display: none;
+            min-height: 100vh;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 10;
+            animation: fadeIn 1.2s ease-in-out;
+        }
+
+        .page.active {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(50px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .card {
+            background: rgba(20, 0, 40, 0.85);
+            border-radius: 30px;
+            padding: 60px 50px;
+            max-width: 850px;
+            width: 100%;
+            box-shadow: 0 0 60px rgba(138, 43, 226, 0.5),
+                        0 0 100px rgba(147, 51, 234, 0.3),
+                        inset 0 0 30px rgba(138, 43, 226, 0.1);
+            text-align: center;
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(138, 43, 226, 0.3);
+        }
+
+        h1 {
+            background: linear-gradient(135deg, #a78bfa 0%, #c084fc 50%, #e879f9 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 3em;
+            margin-bottom: 30px;
+            text-shadow: 0 0 30px rgba(168, 139, 250, 0.5);
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.3); }
+        }
+
+        h2 {
+            color: #c084fc;
+            font-size: 2.2em;
+            margin-bottom: 30px;
+            text-shadow: 0 0 20px rgba(192, 132, 252, 0.6);
+        }
+
+        p {
+            color: #e9d5ff;
+            font-size: 1.35em;
+            line-height: 2;
+            margin-bottom: 22px;
+            text-shadow: 0 0 10px rgba(233, 213, 255, 0.3);
+        }
+
+        .message-box {
+            background: linear-gradient(135deg, rgba(109, 40, 217, 0.3) 0%, rgba(88, 28, 135, 0.3) 100%);
+            padding: 35px;
+            border-radius: 20px;
+            margin: 30px 0;
+            border-right: 5px solid #a78bfa;
+            box-shadow: 0 0 30px rgba(167, 139, 250, 0.2);
+        }
+
+        .highlight {
+            color: #fbbf24;
+            font-weight: bold;
+            text-shadow: 0 0 15px rgba(251, 191, 36, 0.6);
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #7c3aed 0%, #a855f7 50%, #c084fc 100%);
+            color: white;
+            border: none;
+            padding: 20px 50px;
+            font-size: 1.4em;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 15px 10px;
+            transition: all 0.4s ease;
+            box-shadow: 0 0 30px rgba(124, 58, 237, 0.6),
+                        0 10px 25px rgba(124, 58, 237, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 0 50px rgba(168, 139, 250, 0.8),
+                        0 15px 40px rgba(124, 58, 237, 0.6);
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, #4c1d95 0%, #6d28d9 100%);
+        }
+
+        .btn-danger {
+            background: linear-gradient(135deg, #7f1d1d 0%, #991b1b 100%);
+        }
+
+        .shooting-star {
+            position: fixed;
+            width: 2px;
+            height: 2px;
+            background: white;
+            box-shadow: 0 0 4px white;
+            z-index: 5;
+            animation: shoot 2s linear;
+        }
+
+        @keyframes shoot {
+            from {
+                transform: translate(0, 0);
+                opacity: 1;
+            }
+            to {
+                transform: translate(-300px, 300px);
+                opacity: 0;
+            }
+        }
+
+        .cosmic-heart {
+            position: fixed;
+            font-size: 35px;
+            z-index: 100;
+            animation: floatCosmic 5s ease-in infinite;
+            pointer-events: none;
+            filter: drop-shadow(0 0 10px rgba(168, 139, 250, 0.8));
+        }
+
+        @keyframes floatCosmic {
+            0% {
+                transform: translateY(0) rotate(0deg) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-1200px) rotate(720deg) scale(0.5);
+                opacity: 0;
+            }
+        }
+
+        .music-player {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: rgba(20, 0, 40, 0.9);
+            padding: 18px 30px;
+            border-radius: 50px;
+            box-shadow: 0 0 30px rgba(138, 43, 226, 0.6);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border: 2px solid rgba(138, 43, 226, 0.5);
+        }
+
+        .music-btn {
+            background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.3em;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(124, 58, 237, 0.6);
+        }
+
+        .music-btn:hover {
+            transform: scale(1.15);
+            box-shadow: 0 0 30px rgba(168, 139, 250, 0.8);
+        }
+
+        .music-info {
+            color: #c084fc;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(192, 132, 252, 0.6);
+        }
+
+        #game-canvas, #puzzle-canvas, #memory-canvas, #piano-canvas {
+            background: linear-gradient(135deg, rgba(109, 40, 217, 0.3) 0%, rgba(88, 28, 135, 0.3) 100%);
+            border-radius: 20px;
+            cursor: pointer;
+            margin: 25px 0;
+            box-shadow: 0 0 40px rgba(138, 43, 226, 0.4);
+            border: 2px solid rgba(138, 43, 226, 0.3);
+        }
+
+        .score {
+            font-size: 2.2em;
+            color: #fbbf24;
+            margin: 20px 0;
+            text-shadow: 0 0 20px rgba(251, 191, 36, 0.8);
+        }
+
+        textarea {
+            width: 100%;
+            padding: 25px;
+            background: rgba(20, 0, 40, 0.6);
+            border: 2px solid rgba(138, 43, 226, 0.5);
+            border-radius: 20px;
+            color: #e9d5ff;
+            font-size: 1.2em;
+            resize: vertical;
+            min-height: 180px;
+            margin: 25px 0;
+            box-shadow: 0 0 30px rgba(138, 43, 226, 0.2);
+        }
+
+        textarea::placeholder {
+            color: #a78bfa;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #a78bfa;
+            box-shadow: 0 0 40px rgba(167, 139, 250, 0.4);
+        }
+
+        .dark-page {
+            background: radial-gradient(ellipse at center, #1a0000 0%, #000000 100%);
+        }
+
+        .dark-card {
+            background: rgba(10, 0, 0, 0.95);
+            border: 2px solid rgba(139, 0, 0, 0.5);
+            box-shadow: 0 0 60px rgba(139, 0, 0, 0.6);
+        }
+
+        .pain-card {
+            background: rgba(0, 0, 0, 0.95);
+            border: 3px solid #7f1d1d;
+            padding: 25px;
+            margin: 15px;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.5s ease;
+            min-height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 20px rgba(127, 29, 29, 0.4);
+        }
+
+        .pain-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 40px rgba(127, 29, 29, 0.8);
+        }
+
+        .pain-card.flipped {
+            background: rgba(20, 0, 0, 0.98);
+            border-color: #dc2626;
+        }
+
+        .pain-text {
+            color: #fecaca;
+            font-size: 1.3em;
+            line-height: 1.8;
+            text-align: center;
+        }
+
+        .pain-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 30px auto;
+        }
+
+        .final-message {
+            background: linear-gradient(135deg, rgba(88, 28, 135, 0.4) 0%, rgba(109, 40, 217, 0.4) 100%);
+            padding: 50px;
+            border-radius: 25px;
+            margin: 40px 0;
+            border: 3px solid #a78bfa;
+            box-shadow: 0 0 50px rgba(167, 139, 250, 0.5);
+        }
+
+        .hidden-message {
+            background: rgba(88, 28, 135, 0.3);
+            padding: 30px;
+            border-radius: 20px;
+            margin: 25px 0;
+            border-right: 5px solid #fbbf24;
+        }
+
+        .memory-card {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #4c1d95 0%, #6d28d9 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3em;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid rgba(138, 43, 226, 0.5);
+        }
+
+        .memory-card:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 30px rgba(168, 139, 250, 0.6);
+        }
+
+        .memory-card.flipped {
+            background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+        }
+
+        .memory-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 110px);
+            gap: 15px;
+            margin: 30px auto;
+            justify-content: center;
+        }
+
+        .piano-key {
+            width: 60px;
+            height: 200px;
+            background: white;
+            border: 2px solid #333;
+            cursor: pointer;
+            transition: all 0.1s;
+            display: inline-block;
+            margin: 0 2px;
+        }
+
+        .piano-key:hover {
+            background: #f0f0f0;
+        }
+
+        .piano-key:active {
+            background: #e0e0e0;
+            transform: translateY(3px);
+        }
+
+        .piano-container {
+            margin: 30px auto;
+            display: flex;
+            justify-content: center;
+        }
+
+        @media (max-width: 768px) {
+            .card {
+                padding: 40px 25px;
+            }
+            h1 {
+                font-size: 2.2em;
+            }
+            h2 {
+                font-size: 1.8em;
+            }
+            p {
+                font-size: 1.2em;
+            }
+            .music-player {
+                bottom: 15px;
+                left: 15px;
+                padding: 12px 20px;
+            }
+            .btn {
+                padding: 16px 35px;
+                font-size: 1.2em;
+            }
+            .pain-grid {
+                grid-template-columns: 1fr;
+            }
+            .memory-grid {
+                grid-template-columns: repeat(4, 70px);
+                gap: 10px;
+            }
+            .memory-card {
+                width: 70px;
+                height: 70px;
+                font-size: 2em;
+            }
+            .piano-key {
+                width: 40px;
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="galaxy"></div>
+    <canvas id="nebula"></canvas>
+
+    <!-- الصفحة 1: البداية -->
+    <div class="page active" id="page1">
+        <div class="card">
+            <h1>✨ رسالة من أعماق الروح ✨</h1>
+            <p>يا نور...</p>
+            <p>هذه ليست مجرد رسالة... هذا كل ما لم أستطع قوله</p>
+            <p>كل ما حبسته في صدري... كل ما خفت أن أعبر عنه</p>
+            <button class="btn" onclick="goToPage(2)">ابدئي معي 💫</button>
+        </div>
+    </div>
+
+    <!-- الصفحة 2: الضعف والقوة -->
+    <div class="page" id="page2">
+        <div class="card">
+            <h2>ضعفي وقوتي 💜</h2>
+            <div class="message-box">
+                <p><span class="highlight">أنا قوي قدام الكل... لكن ضعيف جداً قدامك</span></p>
+                <p>أنتِ الوحيدة اللي تقدر تهزمني برسالة واحدة</p>
+                <p>وتقدري ترجعيني للحياة بكلمة واحدة</p>
+                <p>أنا مش خايف من أي حاجة في الدنيا</p>
+                <p>لكن خايف من يوم ما تكلمينيش بنفس الحب</p>
+            </div>
+            <button class="btn" onclick="goToPage(3)">كملي... 🌌</button>
+            <button class="btn btn-secondary" onclick="goToPage(1)">رجوع</button>
+        </div>
+    </div>
+
+    <!-- الصفحة 3: الصمت والكلام -->
+    <div class="page" id="page3">
+        <div class="card">
+            <h2>صمتي... 🌙</h2>
+            <div class="message-box">
+                <p><span class="highlight">أنا صامت... مش لأني ما عنديش كلام</span></p>
+                <p>لكن لأن الكلام مش هيوصّل اللي في قلبي</p>
+                <p>كل مرة أحاول أكتب... الكلمات تخونّي</p>
+                <p>لكن لما أقرا رسايلك... بحس إنك بتفهميني</p>
+            </div>
+            <button class="btn" onclick="goToPage(4)">استمري... 💫</button>
+            <button class="btn btn-secondary" onclick="goToPage(2)">رجوع</button>
+        </div>
+    </div>
+
+    <!-- الصفحة 4: الخوف من الفقدان -->
+    <div class="page" id="page4">
+        <div class="card">
+            <h2>خوفي الأكبر... 😔</h2>
+            <div class="message-box">
+                <p><span class="highlight">بخاف من كل حاجة ليها علاقة بفقدانك</span></p>
+                <p>بخاف من يوم تصحي وتلاقي نفسك مش محتاجاني</p>
+                <p>بخاف من لحظة تقرري فيها إنك تكملي من غيري</p>
+                <p>أنا عايش كل يوم وكأنه آخر يوم كلامنا</p>
+                <p>عشان كده بحاول أستغل كل رسالة... بس مش بعرف</p>
+            </div>
+            <button class="btn" onclick="goToPage(5)">كملي... 💔</button>
+            <button class="btn btn-secondary" onclick="goToPage(3)">رجوع</button>
+        </div>
+    </div>
+
+    <!-- الصفحة 5: الندم الحقيقي -->
+    <div class="page" id="page5">
+        <div class="card">
+            <h2>ندمي... ⏳</h2>
+            <div class="message-box">
+                <p><span class="highlight">لو كان في آلة زمن... كنت رجعت لليوم اللي جرحتك فيه</span></p>
+                <p>كنت وقفت قدام نفسي وقلتله: "متعملش كده"</p>
+                <p>لكن مفيش آلة زمن</p>
+                <p>كل اللي عندي هو وعد إني مش هكرر نفس الغلط</p>
+                <p>ووعد إني هفضل أحاول أصلح اللي كسرته</p>
+            </div>
+            <button class="btn" onclick="goToPage(6)">كملي... 💭</button>
+            <button class="btn btn-secondary" onclick="goToPage(4)">رجوع</button>
+        </div>
+    </div>
+
+    <!-- الصفحة 6: الاستثناء -->
+    <div class="page" id="page6">
+        <div class="card">
+            <h2>أنتِ الاستثناء... 🌟</h2>
+            <div class="message-box">
+                <p><span class="highlight">أنا عمري ما فتحت قلبي لحد قبل كده</span></p>
+                <p>كنت دايماً مقفول... متحجر... بارد</p>
+                <p>لكن أنتِ جيتِ وكسرتِ كل الحيطان دي</p>
+                <p>من غير ما تحاولي حتى</p>
+                <p>بس بكلامك... بطريقة حديثك... بأسلوبك</p>
+                <p>دخلتِ قلبي من غير استئذان</p>
+            </div>
+            <button class="btn" onclick="goToPage(7)">كملي... 💜</button>
+            <button class="btn btn-secondary" onclick="goToPage(5)">رجوع</button>
+        </div>
+    </div>
+
+    <!-- الصفحة 7: الألم المشترك -->
+    <div class="page" id="page7">
+        <div class="card">
+            <h2>ألمك... ألمي 💔</h2>
+            <div class="message-box">
+                <p><span class="highlight">أنا عارف إني وجعتك</span></p>
+                <p>وده أكتر حاجة بتوجعني</p>
+                <p>كل رسالة كتبتيها وأنتِ زعلانة بسببي</p>
+                <p>كأنها سكينة في قلبي</p>
+                <p>أنا مش بطلب منك تنسي الوجع ده</p>
+                <p>أنا بطلب منك تسمحيلي إني أعوّضك عنه</p>
+            </div>
+            <button class="btn" onclick="goToPage(8)">كملي... 💫</button>
+            <button class="btn btn-secondary" onclick="goToPage(6)">رجوع</button>
+        </div>
+    </div>
+
+    <!-- الصفحة 8: المستقبل -->
+    <div class="page" id="page8">
+        <div class="card">
+            <h2>مستقبلنا... 🌠</h2>
+            <div class="message-box">
+                <p><span class="highlight">لما بفكر في المستقبل... مش بشوف فلوس أو نجاح</span></p>
+                <p>بشوف اسمك على شاشة تليفوني</p>
+                <p>بشوف نفسي صاحي الصبح ولاقي رسالة صباح منك</p>
+                <p>بشوف نفسي بحكيلك عن يومي وأنتِ بتسمعيني</p>
+                <p>بشوف حياة حقيقية... مش مجرد أيام بتعدي</p>
+            </div>
+            <button class="btn" onclick="goToPage(9)">كملي... 💭</button>
+            <button class="btn btn-secondary" onclick="goToPage(7)">رجوع</button>
+        </div>
+    </div>
+
+    <!-- الصفحة 9: قيمتها -->
+    <div class="page" id="page9">
+        <div class="card">
+            <h2>قيمتك عندي... 👑</h2>
+            <div class="message-box">
+                <p><span class="highlight">أنتِ مش بديل لحد</span></p>
+                <p>ومفيش حد ممكن يبقى بديل ليكِ</p>
+                <p>أنتِ مش رقم في قائمة</p>
+                <p>أنتِ القائمة كلها</p>
+                <p>ولو خسرتك... مش هدور على حد تاني</p>
+                <p>لأن مفيش "نور" تانية في الكون كله</p>
+            </div>
+            <button class="btn" onclick="goToPage(10)">كملي... 💫</button>
+            <button class="btn btn-secondary" onclick="goToPage(8)">رجوع</button>
+        </div>
+    </div>
+
+    <!-- الصفحة 10: التغيير الحقيقي -->
+    <div class="page" id="page10">
+        <div class="card">
+            <h2>وعدي ليكِ... 🌙</h2>
+            <div class="message-box">
+                <p><span class="highlight">أنا مش بوعدك إني هبقى إنسان مختلف بنسبة 100%</span></p>
+                <p>لأن الوعود دي كذب</p>
+                <p>لكن بوعدك إني كل يوم هحاول أبقى أحسن من امبارح</p>
+                <p>هحاول أفهمك أكتر... أحس بيكِ أكتر</p>
+                <p>هحاول أكون الشخص اللي يستاهلك</p>
+                <p>مش هنجح كل يوم... لكن مش هستسلم أبداً</p>
+            </div>
+            <button class="btn" onclick="goToPage(11)">كملي... 💜</button>
+            <button class="btn btn-secondary" onclick="goToPage(9)">رجوع</button>
+        </div>
+    </div>
+
+    <!-- الصفحة 11: الحب الحقيقي -->
+    <div class="page" id="page11">
+        <div class="card">
+            <h2>الحب الحقيقي... ❤️</h2>
+            <div class="message-box">
+                <p><span class="highlight">الحب مش كلمة "بحبك" بكتبها كل يوم</span></p>
+                <p>الحب هو إني أصحى وأول حاجة أفتكرها... أنتِ</p>
+                <p>الحب هو إني أنام وآخر حاجة في بالي... أنتِ</p>
+                <p>الحب هو إني أقرا رسالة زعل منك وأحس إن الدنيا كلها ضلمة</p>
+                <p>والحب هو إني أقرا رسالة فرح منك وأحس إن مفيش حاجة تهمني غير ده</p>
+            </div>
+            <button class="btn" onclick="goToPage(12)">كملي... 💫</button>
+            <button class="btn btn-secondary" onclick="goToPage(10)">رجوع</button>
+        </div>
+    </div>
+
+    <!-- الصفحة 12: الاعتراف بالحاجة -->
+    <div class="page" id="page12">
+        <div class="card">
+            <h2>حاجتي ليكِ... 🌟</h2>
+            <div class="message-box">
+                <p><span class="highlight">أنا محتاجك... وده مش عيب</span></p>
+                <p>أنا مش مكتمل من غيرك... وده مش ضعف</p>
+                <p>أنا ممكن أعيش لوحدي... لكن مش عايز</p>
+                <p>أنا ممكن أكمل حياتي من غيرك... لكن مش هتبقى حياة</p>
+                <p>هتبقى مجرد أيام بتعدي... بلا معنى... بلا لون</p>
+            </div>
+            <button class="btn" onclick="goToPage(13)">كملي... 💭</button>
+            <button class="btn btn-secondary" onclick="goToPage(11)">رجوع</button>
+        </div>
+    </div>
+
+    <!-- الصفحة 13: الأمل -->
+    <div class="page" id="page13">
+        <div class="card">
+            <h2>أملي... 🌠</h2>
+            <div class="message-box">
+                <p><span class="highlight">أنا عارف إن الطريق صعب</span></p>
+                <p>عارف إن رجوع الثقة مش هيبقى برسالة واحدة</p>
+                <p>لكن طول ما في نَفَس... في أمل</p>
+                <p>وطول ما أنتِ موجودة... أنا مش هيأس</p>
+                <p>هستنى... هفضل أحسّن نفسي</p>
+                <p>وهفضل أثبتلك إني أستاهل فرصة تانية</p>
+            </div>
+            <button class="btn" onclick="goToPage(14)">هيا نلعب 🎮</button>
+            <button class="btn btn-secondary" onclick="goToPage(12)">رجوع</button>
+        </div>
+    </div>
+
+    <!-- الصفحة 14: لعبة اجمع القلوب -->
+    <div class="page" id="page14">
+        <div class="card">
+            <h2>اجمعي القلوب 💜</h2>
+            <p>كل قلب يمثل لحظة من حبي لكِ...</p>
+            <div class="score">النتيجة: <span id="score1">0</span> 💜</div>
+            <canvas id="game-canvas" width="600" height="400"></canvas>
+            <button class="btn" onclick="goToPage(15)">اللعبة التالية 🧩</button>
+            <button class="btn btn-secondary" onclick="goToPage(13)">رجوع</button>
+        </div>
+    </div>
+
+    <!-- الصفحة 15: لعبة Puzzle القلب -->
+    <div class="page" id="page15">
+        <div class="card">
+            <h2>اصلحي القلب المكسور 💔➡️💜</h2>
+            <p>رتبي القطع... وخليني كامل تاني</p>
+            <canvas id="puzzle-canvas" width="500" height="500"></canvas>
+            <div class="score" id="puzzle-status">اضغطي على القطع لتبديلها</div>
+            <button class="btn" onclick="goToPage(16)">اللعبة التالية 📜</button>
+            <button class="btn btn-secondary" onclick="goToPage(14)">رجوع</button>
+        </div>
+    </div>
+
+    <!-- الصفحة 16: الرسالة المخفية -->
+    <div class="page" id="page16">
+        <div class="card">
+            <h2>الرسالة المخفية 📜</h2>
+            <p>اجمعي النجوم بالترتيب... واكتشفي الرسالة</p>
+            <canvas id="message-canvas" width="600" height="400"></canvas>
+            <div class="hidden-message" id="hidden-text" style="min-height: 80px;"></div>
+            <button class="btn" onclick="goToPage(17)">اللعبة التالية 🃏</button>
+            <button class="btn btn-secondary" onclick="goToPage(15)">رجوع</button>
+        </div>
+    </div>
+
+    <!-- الصفحة 17: Memory Cards -->
+    <div class="page" id="page17">
+        <div class="card">
+            <h2>ذكريات القلب 🃏</h2>
+            <p>لاقي الأزواج المتشابهة...</p>
+            <div class="score">المحاولات: <span id="memory-moves">0</span></div>
+            <div class="memory-grid" id="memory-grid"></div>
+            <button class="btn" onclick="goToPage(18)">اللعبة التالية 🎹</button>
+            <button class="btn btn-secondary" onclick="goToPage(16)">رجوع</button>
+        </div>
+    </div>
+
+    <!-- الصفحة 18: Piano -->
+    <div class="page" id="page18">
+        <div class="card">
+            <h2>عزفي معايا 🎹</h2>
+            <p>اضغطي على المفاتيح... واعزفي لحن حبنا</p>
+            <div class="piano-container" id="piano-container"></div>
+            <button class="btn" onclick="goToPage(19)">خلصت الألعاب... 💭</button>
+            <button class="btn btn-secondary" onclick="goToPage(17)">رجوع</button>
+        </div>
+    </div>
+
+    <!-- الصفحة 19: التحذير -->
+    <div class="page" id="page19">
+        <div class="card dark-card">
+            <h1 style="color: #dc2626;">⚠️</h1>
+            <h2 style="color: #fca5a5;">تحذير</h2>
+            <p style="color: #fecaca; font-size: 1.6em;">محتوى عميق ويجيب الحزن !!</p>
+            <br>
+            <p style="color: #fecaca;">هنا... هتشوفي الجانب التاني</p>
+            <p style="color: #fecaca;">الجانب اللي ما حدش بيشوفه</p>
+            <br>
+            <p style="color: #fca5a5; font-size: 1.3em;">لو مستعدة تفهمي... اضغطي</p>
+            <br><br>
+            <button class="btn btn-danger" onclick="goToPage(20)">ادخلي لعالمي 💔</button>
+            <button class="btn" onclick="goToPage(21)">تخطي - كملي للرسالة الأخيرة 💜</button>
+        </div>
+    </div>
+
+    <!-- الصفحة 20: لعبة الألم -->
+    <div class="page dark-page" id="page20">
+        <div class="card dark-card">
+            <h2 style="color: #dc2626;">Don't Forget 🃏💔</h2>
+            <p style="color: #fecaca;">اقلبي الكروت... واعرفي حقيقة ألمي</p>
+            <div class="score" style="color: #dc2626;">الكروت المقلوبة: <span id="pain-count">0</span> / 20</div>
+            <div class="pain-grid" id="pain-grid"></div>
+            <div class="final-message" id="final-pain-message" style="display: none;">
+                <h2>💜 لكن... أنتِ جيتي</h2>
+                <p style="font-size: 1.4em;">وغيرتي كل ده</p>
+                <p>لأول مرة حد شافني</p>
+                <p>حد فهمني</p>
+                <p>حد حس بيا</p>
+                <p style="font-size: 1.5em;"><span class="highlight">أنتِ النور في الضلمة دي كلها</span></p>
+                <p style="font-size: 1.3em;">عشان كده... مش هسيبك 💜</p>
+            </div>
+            <button class="btn" onclick="goToPage(21)" style="margin-top: 30px;">كملي للرسالة الأخيرة 💌</button>
+        </div>
+    </div>
+
+    <!-- الصفحة 21: الرسالة الأخيرة -->
+    <div class="page" id="page21">
+        <div class="card">
+            <h2>رسالتي الأخيرة... 💝</h2>
+            <div class="message-box">
+                <p>يا نور...</p>
+                <p>كل اللي قلته فوق... كل كلمة... كل حرف</p>
+                <p>ده مش كلام عشان أرجعك بس</p>
+                <p><span class="highlight">ده الحقيقة اللي في قلبي</span></p>
+                <p>أنا مش بطلب منك تسامحيني دلوقتي</p>
+                <p>أنا بطلب منك فرصة إني أثبتلك إني أستاهل</p>
+                <p>وأياً كان قرارك... هفضل أحترمه</p>
+                <p>لأن سعادتك أهم من أناني</p>
+            </div>
+            <button class="btn" onclick="goToPage(22)">قوليلي رأيكِ 💬</button>
+            <button class="btn btn-secondary" onclick="goToPage(19)">رجوع</button>
+        </div>
+    </div>
+
+    <!-- الصفحة 22: النموذج -->
+    <div class="page" id="page22">
+        <div class="card">
+            <h2>نفسي أعرف... 💭</h2>
+            <p>اكتبيلي كل ما تشعرين به</p>
+            <p>أنا هنا لأسمع... بدون دفاع... بدون تبرير</p>
+            <p>فقط لأفهم</p>
+            <textarea id="response" placeholder="اكتبي هنا بكل صراحة..."></textarea>
+            <button class="btn" onclick="submitResponse()">ابعتي رسالتكِ ✉️</button>
+            <button class="btn btn-secondary" onclick="goToPage(21)">رجوع</button>
+        </div>
+    </div>
+
+    <!-- الصفحة 23: الشكر -->
+    <div class="page" id="page23">
+        <div class="card">
+            <h1>شكراً... 🙏</h1>
+            <p style="font-size: 1.6em;">شكراً لأنكِ قرأتِ كل هذا</p>
+            <p style="font-size: 1.6em;">شكراً لأنكِ أعطيتيني وقتك</p>
+            <p style="font-size: 1.6em;"><span class="highlight">سأنتظر... مهما طال الانتظار</span></p>
+            <p style="font-size: 1.6em;">لن أيأس منكِ أبداً 💜</p>
+            <p style="font-size: 1.3em;">لأنكِ تستحقين كل هذا الانتظار وأكثر</p>
+            <button class="btn" onclick="goToPage(1)">ابدئي من جديد 🔄</button>
+        </div>
+    </div>
+
+    <!-- مشغل الموسيقى -->
+    <div class="music-player">
+        <button class="music-btn" onclick="toggleMusic()" id="musicBtn">▶️</button>
+        <div class="music-info" id="musicInfo">اضغطي لتشغيل الموسيقى 🎵</div>
+    </div>
+
+        <audio id="backgroundMusic" loop>
+        <source src="https://cdn.pixabay.com/download/audio/2021/09/07/audio_96f1f6c2b5.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        let currentPage = 1;
+        let isPlaying = false;
+        let audioContext;
+
+        function createStars() {
+            const galaxy = document.getElementById('galaxy');
+            for (let i = 0; i < 200; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                const size = Math.random() * 3;
+                star.style.width = size + 'px';
+                star.style.height = size + 'px';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                galaxy.appendChild(star);
+            }
+        }
+        createStars();
+
+        const nebula = document.getElementById('nebula');
+        const nebulaCtx = nebula.getContext('2d');
+        nebula.width = window.innerWidth;
+        nebula.height = window.innerHeight;
+
+        function drawNebula() {
+            nebulaCtx.clearRect(0, 0, nebula.width, nebula.height);
+            const gradient = nebulaCtx.createRadialGradient(
+                nebula.width / 2, nebula.height / 2, 0,
+                nebula.width / 2, nebula.height / 2, nebula.width / 2
+            );
+            gradient.addColorStop(0, 'rgba(124, 58, 237, 0.3)');
+            gradient.addColorStop(0.3, 'rgba(168, 139, 250, 0.2)');
+            gradient.addColorStop(0.6, 'rgba(192, 132, 252, 0.1)');
+            gradient.addColorStop(1, 'rgba(10, 0, 21, 0)');
+            nebulaCtx.fillStyle = gradient;
+            nebulaCtx.fillRect(0, 0, nebula.width, nebula.height);
+        }
+        drawNebula();
+
+        window.addEventListener('resize', () => {
+            nebula.width = window.innerWidth;
+            nebula.height = window.innerHeight;
+            drawNebula();
+        });
+
+        function createShootingStar() {
+            const star = document.createElement('div');
+            star.className = 'shooting-star';
+            star.style.left = Math.random() * window.innerWidth + 'px';
+            star.style.top = Math.random() * (window.innerHeight / 2) + 'px';
+            document.body.appendChild(star);
+            setTimeout(() => star.remove(), 2000);
+        }
+        setInterval(createShootingStar, 3000);
+
+        function goToPage(pageNum) {
+            playSound();
+            createCosmicHearts();
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            document.getElementById('page' + pageNum).classList.add('active');
+            currentPage = pageNum;
+
+            if (pageNum === 14) initGame1();
+            if (pageNum === 15) initPuzzle();
+            if (pageNum === 16) initHiddenMessage();
+            if (pageNum === 17) initMemory();
+            if (pageNum === 18) initPiano();
+            if (pageNum === 20) initPainGame();
+        }
+
+        function createCosmicHearts() {
+            for (let i = 0; i < 5; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.className = 'cosmic-heart';
+                    const hearts = ['💜', '💙', '💖', '✨', '⭐'];
+                    heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+                    heart.style.left = Math.random() * window.innerWidth + 'px';
+                    heart.style.bottom = '-50px';
+                    document.body.appendChild(heart);
+                    setTimeout(() => heart.remove(), 5000);
+                }, i * 150);
+            }
+        }
+
+        function playSound() {
+            if (!audioContext) {
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            }
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            oscillator.frequency.value = 800;
+            oscillator.type = 'sine';
+            gainNode.gain.setValueAtTime(0.15, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.15);
+            oscillator.start(audioContext.currentTime);
+            oscillator.stop(audioContext.currentTime + 0.15);
+        }
+
+        function toggleMusic() {
+            const music = document.getElementById('backgroundMusic');
+            const btn = document.getElementById('musicBtn');
+            const info = document.getElementById('musicInfo');
+
+            if (music.paused) {
+                music.play();
+                btn.innerHTML = '⏸️';
+                info.textContent = 'الموسيقى تعمل... 🎵';
+            } else {
+                music.pause();
+                btn.innerHTML = '▶️';
+                info.textContent = 'الموسيقى متوقفة';
+            }
+        }
+
+        let game1Canvas, game1Ctx, player1, hearts1, game1Interval, score1 = 0;
+
+        function initGame1() {
+            game1Canvas = document.getElementById('game-canvas');
+            game1Ctx = game1Canvas.getContext('2d');
+            score1 = 0;
+            document.getElementById('score1').textContent = score1;
+
+            player1 = {
+                x: game1Canvas.width / 2,
+                y: game1Canvas.height - 60,
+                width: 45,
+                height: 45
+            };
+
+            hearts1 = [];
+
+            game1Canvas.addEventListener('mousemove', (e) => {
+                const rect = game1Canvas.getBoundingClientRect();
+                player1.x = e.clientX - rect.left - player1.width / 2;
+            });
+
+            game1Canvas.addEventListener('touchmove', (e) => {
+                e.preventDefault();
+                const rect = game1Canvas.getBoundingClientRect();
+                player1.x = e.touches[0].clientX - rect.left - player1.width / 2;
+            });
+
+            if(game1Interval) clearInterval(game1Interval);
+            game1Interval = setInterval(() => {
+                const heartTypes = ['💜', '💙', '💖', '💝'];
+                hearts1.push({
+                    x: Math.random() * (game1Canvas.width - 35),
+                    y: -35,
+                    width: 35,
+                    height: 35,
+                    speed: 2 + Math.random() * 2.5,
+                    emoji: heartTypes[Math.floor(Math.random() * heartTypes.length)]
+                });
+            }, 800);
+
+            game1Loop();
+        }
+
+        function game1Loop() {
+            if (currentPage !== 14) {
+                if(game1Interval) clearInterval(game1Interval);
+                return;
+            }
+
+            game1Ctx.clearRect(0, 0, game1Canvas.width, game1Canvas.height);
+            game1Ctx.font = '45px Arial';
+            game1Ctx.fillText('💜', player1.x, player1.y);
+
+            for (let i = hearts1.length - 1; i >= 0; i--) {
+                const heart = hearts1[i];
+                heart.y += heart.speed;
+                game1Ctx.font = '35px Arial';
+                game1Ctx.fillText(heart.emoji, heart.x, heart.y);
+
+                if (heart.x < player1.x + player1.width &&
+                    heart.x + heart.width > player1.x &&
+                    heart.y < player1.y + player1.height &&
+                    heart.y + heart.height > player1.y) {
+                    hearts1.splice(i, 1);
+                    score1++;
+                    document.getElementById('score1').textContent = score1;
+                    playSound();
+                    createCosmicHearts();
+                }
+
+                if (heart.y > game1Canvas.height) {
+                    hearts1.splice(i, 1);
+                }
+            }
+
+            requestAnimationFrame(game1Loop);
+        }
+
+        let puzzleCanvas, puzzleCtx, puzzlePieces = [], selectedPiece = null;
+
+                function initPuzzle() {
+            puzzleCanvas = document.getElementById('puzzle-canvas');
+            puzzleCtx = puzzleCanvas.getContext('2d');
+
+            puzzlePieces = [
+                {x: 50, y: 50, correctX: 50, correctY: 50, color: '#ec4899'},
+                {x: 200, y: 50, correctX: 200, correctY: 50, color: '#a855f7'},
+                {x: 350, y: 50, correctX: 350, correctY: 50, color: '#ec4899'},
+                {x: 50, y: 200, correctX: 50, correctY: 200, color: '#a855f7'},
+                {x: 200, y: 200, correctX: 200, correctY: 200, color: '#ec4899'},
+                {x: 350, y: 200, correctX: 350, correctY: 200, color: '#a855f7'},
+                {x: 50, y: 350, correctX: 50, correctY: 350, color: '#ec4899'},
+                {x: 200, y: 350, correctX: 200, correctY: 350, color: '#a855f7'},
+                {x: 350, y: 350, correctX: 350, correctY: 350, color: '#ec4899'}
+            ];
+
+            for (let i = puzzlePieces.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [puzzlePieces[i].x, puzzlePieces[j].x] = [puzzlePieces[j].x, puzzlePieces[i].x];
+                [puzzlePieces[i].y, puzzlePieces[j].y] = [puzzlePieces[j].y, puzzlePieces[i].y];
+            }
+
+            if (!puzzleCanvas._init) {
+                puzzleCanvas.addEventListener('click', (e) => {
+                    const rect = puzzleCanvas.getBoundingClientRect();
+                    const clickX = e.clientX - rect.left;
+                    const clickY = e.clientY - rect.top;
+
+                    for (let piece of puzzlePieces) {
+                        if (clickX >= piece.x && clickX <= piece.x + 120 &&
+                            clickY >= piece.y && clickY <= piece.y + 120) {
+                            if (!selectedPiece) {
+                                selectedPiece = piece;
+                            } else {
+                                [selectedPiece.x, piece.x] = [piece.x, selectedPiece.x];
+                                [selectedPiece.y, piece.y] = [piece.y, selectedPiece.y];
+                                selectedPiece = null;
+                                checkPuzzle();
+                            }
+                            break;
+                        }
+                    }
+                    drawPuzzle();
+                });
+                puzzleCanvas._init = true;
+            }
+
+            drawPuzzle();
+        }
+
+        function drawPuzzle() {
+            puzzleCtx.clearRect(0, 0, puzzleCanvas.width, puzzleCanvas.height);
+            for(let piece of puzzlePieces) {
+                puzzleCtx.fillStyle = piece.color;
+                puzzleCtx.fillRect(piece.x, piece.y, 120, 120);
+                puzzleCtx.strokeStyle = selectedPiece === piece ? '#fbbf24' : '#fff';
+                puzzleCtx.lineWidth = selectedPiece === piece ? 4 : 2;
+                puzzleCtx.strokeRect(piece.x, piece.y, 120, 120);
+            }
+        }
+
+        function checkPuzzle() {
+            let correct = true;
+            for(let piece of puzzlePieces) {
+                if(piece.x !== piece.correctX || piece.y !== piece.correctY) {
+                    correct = false;
+                    break;
+                }
+            }
+            if(correct) {
+                document.getElementById('puzzle-status').innerHTML = '🎉 القلب اتصلح! القلب كامل تاني 💜';
+                createCosmicHearts();
+            }
+        }
+
+        let messageCanvas, messageCtx, messageStars = [], hiddenMessage = '';
+        const fullMessage = "أنتِ النور اللي في حياتي 💜";
+
+        function initHiddenMessage() {
+            messageCanvas = document.getElementById('message-canvas');
+            messageCtx = messageCanvas.getContext('2d');
+            messageStars = [];
+            hiddenMessage = '';
+            document.getElementById('hidden-text').innerHTML = '';
+
+            for(let i = 0; i < fullMessage.length; i++) {
+                messageStars.push({
+                    x: 50 + (i % 10) * 55,
+                    y: 100 + Math.floor(i / 10) * 100,
+                    char: fullMessage[i],
+                    collected: false,
+                    index: i
+                });
+            }
+
+            messageCanvas.addEventListener('click', (e) => {
+                const rect = messageCanvas.getBoundingClientRect();
+                const clickX = e.clientX - rect.left;
+                const clickY = e.clientY - rect.top;
+
+                for(let star of messageStars) {
+                    if(!star.collected && 
+                       Math.abs(clickX - star.x) < 20 && 
+                       Math.abs(clickY - star.y) < 20) {
+                        star.collected = true;
+                        hiddenMessage += star.char;
+                        document.getElementById('hidden-text').innerHTML = 
+                            '<p style="font-size: 1.8em; color: #fbbf24;">' + hiddenMessage + '</p>';
+                        playSound();
+                        createCosmicHearts();
+                        break;
+                    }
+                }
+                drawMessage();
+            });
+
+            drawMessage();
+        }
+
+        function drawMessage() {
+            messageCtx.clearRect(0, 0, messageCanvas.width, messageCanvas.height);
+            for(let star of messageStars) {
+                if(!star.collected) {
+                    messageCtx.font = '30px Arial';
+                    messageCtx.fillText('⭐', star.x - 15, star.y);
+                }
+            }
+        }
+
+        let memoryCards = [], flippedCards = [], memoryMoves = 0;
+        const memorySymbols = ['💜', '💙', '💖', '💝', '✨', '🌟', '💕', '💗'];
+
+        function initMemory() {
+            const grid = document.getElementById('memory-grid');
+            grid.innerHTML = '';
+            memoryCards = [];
+            flippedCards = [];
+            memoryMoves = 0;
+            document.getElementById('memory-moves').textContent = memoryMoves;
+
+            const symbols = [...memorySymbols, ...memorySymbols];
+            symbols.sort(() => Math.random() - 0.5);
+
+            symbols.forEach((symbol, index) => {
+                const card = document.createElement('div');
+                card.className = 'memory-card';
+                card.dataset.symbol = symbol;
+                card.dataset.index = index;
+                card.innerHTML = '?';
+                card.addEventListener('click', flipMemoryCard);
+                grid.appendChild(card);
+                memoryCards.push(card);
+            });
+        }
+
+        function flipMemoryCard(e) {
+            const card = e.target;
+            if(card.classList.contains('flipped') || flippedCards.length === 2) return;
+
+            card.classList.add('flipped');
+            card.innerHTML = card.dataset.symbol;
+            flippedCards.push(card);
+            playSound();
+
+            if(flippedCards.length === 2) {
+                memoryMoves++;
+                document.getElementById('memory-moves').textContent = memoryMoves;
+
+                if(flippedCards[0].dataset.symbol === flippedCards[1].dataset.symbol) {
+                    createCosmicHearts();
+                    flippedCards = [];
+                } else {
+                    setTimeout(() => {
+                        flippedCards.forEach(c => {
+                            c.classList.remove('flipped');
+                            c.innerHTML = '?';
+                        });
+                        flippedCards = [];
+                    }, 800);
+                }
+            }
+        }
+
+        function initPiano() {
+            const container = document.getElementById('piano-container');
+            container.innerHTML = '';
+
+            const notes = [
+                {freq: 261.63, label: 'C'},
+                {freq: 293.66, label: 'D'},
+                {freq: 329.63, label: 'E'},
+                {freq: 349.23, label: 'F'},
+                {freq: 392.00, label: 'G'},
+                {freq: 440.00, label: 'A'},
+                {freq: 493.88, label: 'B'},
+                {freq: 523.25, label: 'C2'}
+            ];
+
+            notes.forEach(note => {
+                const key = document.createElement('div');
+                key.className = 'piano-key';
+                key.addEventListener('click', () => playPianoNote(note.freq));
+                container.appendChild(key);
+            });
+        }
+
+        function playPianoNote(freq) {
+            if (!audioContext) {
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            }
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            oscillator.frequency.value = freq;
+            oscillator.type = 'sine';
+            gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.8);
+            oscillator.start(audioContext.currentTime);
+            oscillator.stop(audioContext.currentTime + 0.8);
+            createCosmicHearts();
+        }
+
+        const painMessages = [
+            "أنا مش كسلان... أنا متعب من الصراع مع نفسي كل يوم",
+            "الدراسة سرقت حياتي... والاكتئاب سرق روحي",
+            "كل الناس بتتقدم... وأنا واقف في مكاني",
+            "مفيش حد فاهمني... ومفيش حد شايف ألمي",
+            "أنا مش فاشل... أنا بحارب عدو ما حدش شايفه",
+            "الوحدة مش إنك لوحدك... الوحدة إنك وسط ناس وحاسس إنك لوحدك",
+            "بجلد نفسي كل يوم... عشان أحس إني لسه موجود",
+            "مفيش عائلة تسندني... مفيش حد يشيل معايا",
+            "أنا تايه في حياتي... ومش عارف الطريق فين",
+            "كل يوم بقول هبدأ من جديد... وكل يوم بفشل",
+            "الاكتئاب مش ضعف... الاكتئاب حرب صامتة",
+            "المقارنات بتقتلني ببطء... وأنا مش قادر أوقفها",
+            "أنا مش بطلب كتير... بس نفسي حد يفهمني",
+            "الدراسة قالولي هتنجحك... لكن ما قالوليش هتحطمك",
+            "أنا مش عايز شفقة... أنا عايز فهم",
+            "كل ما أحاول أقوم... الحياة ترميني تاني",
+            "مفيش حد سأل عليا... ومفيش حد حاسس بيا",
+            "أنا مش زي الناس... وده اللي بيوجعني",
+            "نفسي أنام ومصحاش... مش عشان عايز أموت، عشان تعبت",
+            "أنا لوحدي في كل حاجة... حتى في وجع قلبي"
+        ];
+
+        let painCount = 0;
+
+        function initPainGame() {
+            const grid = document.getElementById('pain-grid');
+            grid.innerHTML = '';
+            painCount = 0;
+            document.getElementById('pain-count').textContent = painCount;
+            document.getElementById('final-pain-message').style.display = 'none';
+
+            painMessages.forEach((msg, index) => {
+                const card = document.createElement('div');
+                card.className = 'pain-card';
+                card.innerHTML = '<p style="color: #7f1d1d; font-size: 2em;">🃏</p>';
+                card.addEventListener('click', () => flipPainCard(card, msg));
+                grid.appendChild(card);
+            });
+        }
+
+        function flipPainCard(card, message) {
+            if(card.classList.contains('flipped')) return;
+
+            card.classList.add('flipped');
+            card.innerHTML = '<p class="pain-text">' + message + '</p>';
+            painCount++;
+            document.getElementById('pain-count').textContent = painCount;
+
+            if (!audioContext) {
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            }
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            oscillator.frequency.value = 200;
+            oscillator.type = 'sine';
+            gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 1);
+            oscillator.start(audioContext.currentTime);
+            oscillator.stop(audioContext.currentTime + 1);
+
+            if(painCount === 20) {
+                setTimeout(() => {
+                    document.getElementById('final-pain-message').style.display = 'block';
+                    createCosmicHearts();
+                }, 1000);
+            }
+        }
+
+        function submitResponse() {
+            const response = document.getElementById('response').value;
+            if (response.trim() === '') {
+                alert('من فضلكِ... اكتبي لي شيئاً 💔');
+                return;
+            }
+            playSound();
+            createCosmicHearts();
+            console.log('رسالة من نور:', response);
+            alert('شكراً من كل قلبي... كلامكِ يعني لي كل شيء 💜');
+            goToPage(23);
+        }
+
+        createCosmicHearts();
+    </script>
+</body>
+</html>
